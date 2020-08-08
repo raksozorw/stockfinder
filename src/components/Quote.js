@@ -10,7 +10,6 @@ import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import DeleteIcon from "@material-ui/icons/Delete";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 
 export default function Quote(props) {
@@ -68,7 +67,7 @@ export default function Quote(props) {
             currency: response.data.currency,
           });
         } else {
-          setProfile({ name: "No company data available." }); // something stops the getQuote from firing if the name isn't valid
+          setProfile({ name: "No company data available." });
         }
         console.log(response);
       })
@@ -112,8 +111,8 @@ export default function Quote(props) {
     db.ref(`lists/${uid}/${dId + id}`).set(data.ticker);
   };
 
-  const up = <ArrowDropUpIcon color='primary' fontSize='large' />;
-  const down = <ArrowDropDownIcon color='secondary' fontSize='large' />;
+  const up = <ArrowDropUpIcon style={{ color: "green" }} fontSize='large' />;
+  const down = <ArrowDropDownIcon style={{ color: "red" }} fontSize='large' />;
 
   return (
     <div>
