@@ -17,7 +17,6 @@ export default function Quote(props) {
   const [profile, setProfile] = useState({});
   const [change, setChange] = useState(0);
   const [increase, setIncrease] = useState(true);
-  const [ticker, setTicker] = useState();
   const uid = useSelector((state) => state.auth.userId);
   const dispatch = useDispatch();
   const getQuote = async () => {
@@ -80,15 +79,6 @@ export default function Quote(props) {
     getQuote();
   }, [props.symbol]);
 
-  //   useEffect(() => {
-  //     if (props.currentPrice > data.open) {
-  //       setIncrease(true);
-  //     } else if (props.currentPrice < data.open) {
-  //       setIncrease(false);
-  //     }
-  //     setChange((props.currentPrice - data.open).toFixed(2));
-  //   }, [props.currentPrice]);
-
   useEffect(() => {
     if (data.current > data.open) {
       setIncrease(true);
@@ -102,7 +92,6 @@ export default function Quote(props) {
       actual: actual.toFixed(2),
     });
   }, [data.current]);
-  //change functions back to currentPrice for realtime....
 
   const firebaseSubmit = () => {
     const date = new Date();
@@ -135,10 +124,7 @@ export default function Quote(props) {
 
         <div className='quote-numbers'>
           <div className='price'>
-            <h1>
-              {/* {props.currentPrice ? props.currentPrice : <CircularProgress />} */}
-              {data.current ? data.current : <CircularProgress />}
-            </h1>
+            <h1>{data.current ? data.current : <CircularProgress />}</h1>
             <div className='arrow'>{increase ? up : down}</div>
           </div>
           <div className=''>

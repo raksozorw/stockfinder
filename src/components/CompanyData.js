@@ -3,7 +3,7 @@
 // can't figure out how to make it controlled by state... documentation could be better
 // Should try contributing to docs!!
 
-import React, { useEffect } from "react";
+import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 

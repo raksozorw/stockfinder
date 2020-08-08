@@ -6,39 +6,10 @@ import Button from "@material-ui/core/Button";
 import NewList from "./NewList";
 
 export default function Dashboard() {
-  const [stock, setStock] = useState();
   const [input, setInput] = useState("");
   const [symbol, setSymbol] = useState("AAPL");
   const newError = useSelector((state) => state.error);
   const dispatch = useDispatch();
-
-  const token = process.env.REACT_APP_API_TOKEN;
-
-  const socket = new WebSocket(`wss://ws.finnhub.io?token=${token}`);
-
-  // Connection opened -> Subscribe
-  //   socket.addEventListener("open", function (event) {
-  //     socket.send(JSON.stringify({ type: "subscribe", symbol: "AAPL" }));
-  //   });
-
-  // Listen for messages
-  //   socket.addEventListener("message", function (event) {
-  //     const data = JSON.parse(event.data);
-  //     if (data.data) {
-  //       const price = data.data[0].p;
-  //       if (price > stock) {
-  //         setIncrease(true);
-  //       } else if (price < stock) {
-  //         setIncrease(false);
-  //       }
-  //       setStock(price.toFixed(2));
-  //     }
-  //   });
-
-  // Unsubscribe
-  var unsubscribe = function (symbol) {
-    socket.send(JSON.stringify({ type: "unsubscribe", symbol: symbol }));
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -87,7 +58,7 @@ export default function Dashboard() {
         </div>
         <div className='dashboard-stock-box'>
           <div>
-            <Quote currentPrice={stock} symbol={symbol} resetError={true} />
+            <Quote symbol={symbol} resetError={true} />
           </div>
         </div>
       </div>
