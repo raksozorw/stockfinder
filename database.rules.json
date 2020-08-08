@@ -1,0 +1,10 @@
+{
+  "rules": {
+    "lists": {
+      "$uid": {
+        ".write": "$uid === auth.uid",
+        ".read": "$uid === auth.uid"
+      }
+    }
+  }
+}
