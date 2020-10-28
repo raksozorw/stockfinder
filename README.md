@@ -1,4 +1,4 @@
-## Stock Finder App
+# Stock Finder App
 
 This app lets you search for stocks by ticker name and, if logged in, save to your watchlist.
 
@@ -7,6 +7,13 @@ The project utilizes Firebase for authentication, hosting, and database.
 ## API
 
 Stock data is gathered from https://finnhub.io/ API
+
+## Technologies
+
+- React
+- Redux
+- Firebase (Realtime DB, Authentication, Hosting)
+- Material UI
 
 ## Future Improvements
 
