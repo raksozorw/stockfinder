@@ -61,7 +61,9 @@ export default function Auth() {
             Sign Out
           </div>
         ) : (
-          <div></div>
+          <div>
+            <a href='#login'>Sign In To Create a Watchlist</a>
+          </div>
         )}
       </div>
     </div>

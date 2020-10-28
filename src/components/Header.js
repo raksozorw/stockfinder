@@ -6,6 +6,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
+import { Link } from "react-router-dom";
 
 import Auth from "./Auth";
 import SimpleMenu from "./MUImenu";
@@ -44,7 +45,9 @@ export default function Header() {
             color='inherit'
             aria-label='menu'
           >
-            Stock Finder
+            <Link style={{ color: "white", textDecoration: "none" }} to='/'>
+              Stock Finder
+            </Link>
           </IconButton>
           <Typography variant='h6' className={classes.title}></Typography>
           <Button color='inherit'>

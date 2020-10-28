@@ -20,3 +20,5 @@ const db = firebase.database();
 const ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 export { db, ui };
+
+// This is not the only conifg, you should initialize firebase in the console, and add the scripts to the HTML

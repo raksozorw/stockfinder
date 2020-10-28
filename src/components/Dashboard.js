@@ -4,8 +4,9 @@ import { unsetError } from "../actions";
 import Quote from "./Quote";
 import Button from "@material-ui/core/Button";
 import NewList from "./NewList";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
-export default function Dashboard() {
+export default function Dashboard(props) {
   const [input, setInput] = useState("");
   const [symbol, setSymbol] = useState("AAPL");
   const newError = useSelector((state) => state.error);
@@ -25,7 +26,7 @@ export default function Dashboard() {
   return (
     <div>
       <section id='dashboard'></section>
-      <div>—</div>
+
       <div className='dashboard'>
         <div className='dashboard-search'>
           <form className='stock-search' onSubmit={handleSubmit}>
@@ -62,8 +63,12 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-      <section id='watchlist' />
-      <NewList />
+      {props.login !== true && (
+        <div>
+          <section id='watchlist' />
+          <NewList />
+        </div>
+      )}
     </div>
   );
 }

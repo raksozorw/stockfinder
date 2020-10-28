@@ -5,7 +5,7 @@ import history from "../history";
 import Button from "@material-ui/core/Button";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
-export default function Login() {
+export default function LoginForm() {
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
@@ -85,11 +85,11 @@ export default function Login() {
 
   const SignUp = (
     <div>
-      <h1>Sign Up</h1>
+      <h1>Sign Up to Create a Watchlist</h1>
       <form onSubmit={handleSignUp}>
         <div className='login-fields'>
           <div className='field'>
-            <label>Username</label>
+            <label>Email</label>
             <input
               onChange={handleUsername}
               value={credentials.username}
@@ -129,11 +129,11 @@ export default function Login() {
 
   const SignIn = (
     <div>
-      <h1>Sign In</h1>
+      <h1>Sign In To Create a Watchlist</h1>
       <form onSubmit={handleSignIn}>
         <div className='login-fields'>
           <div className='field'>
-            <label>Username</label>
+            <label>Email</label>
             <input
               onChange={handleUsername}
               value={credentials.username}

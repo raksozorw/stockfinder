@@ -5,7 +5,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./MUI";
 
 import Header from "./Header";
-import Login from "./Login";
+import LoginPage from "./LoginPage";
 import Dashboard from "./Dashboard";
 import Footer from "./Footer";
 import "../styles.css";
@@ -19,7 +19,7 @@ export default function App() {
           <div className='darkened'>
             <Header />
             <Switch>
-              <Route path='/' exact component={Login} />
+              <Route path='/' exact component={LoginPage} />
               <Route path='/home' exact component={Dashboard} />
 
               <Route path='*' exact={true} component={set404} />

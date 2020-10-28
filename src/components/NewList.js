@@ -102,5 +102,3 @@ export default function NewList() {
     </div>
   );
 }
-
-// try to mess around i nthe action creator .... just want to redirect if there is no uid after a few seconds
