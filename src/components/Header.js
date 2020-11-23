@@ -45,7 +45,10 @@ export default function Header() {
             color='inherit'
             aria-label='menu'
           >
-            <Link style={{ color: "white", textDecoration: "none" }} to='/'>
+            <Link
+              style={{ color: "white", textDecoration: "none" }}
+              to={signedIn ? "/home" : "/"}
+            >
               Stock Finder
             </Link>
           </IconButton>

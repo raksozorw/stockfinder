@@ -6,11 +6,6 @@ import { signIn, signOut, fetch, stopFetch } from "../actions";
 import { Link } from "react-router-dom";
 import history from "../history";
 
-import CircularProgress from "@material-ui/core/CircularProgress";
-
-// I think we use reducer here...
-// on sign in, set the authResult uid... then access things from database that have that same uid.
-
 export default function Auth() {
   const signedIn = useSelector((state) => state.auth.isSignedIn);
   const userId = useSelector((state) => state.auth.userId);
@@ -33,8 +28,6 @@ export default function Auth() {
         dispatch(signIn(uid));
         setDN(displayName);
         dispatch(stopFetch());
-        // history.push("/home"); MAKES SO WHEN LOGGED IN CAN'T ACCESS SIGN IN PAGE,
-        // ...
       } else {
         dispatch(stopFetch());
         history.push("/");
