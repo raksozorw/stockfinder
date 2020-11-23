@@ -4,6 +4,10 @@ This app lets you search for stocks by ticker name and, if logged in, save to yo
 
 The project utilizes Firebase for authentication, hosting, and database.
 
+## Live Site
+
+https://stocks-cffe6.web.app/
+
 ## MVC Wireframe
 
 Basic functionality, not including the user sign in.
