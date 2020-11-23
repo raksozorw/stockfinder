@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 
 export default function MUISnackbar(props) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const uid = useSelector((state) => state.auth.userId);
 
-  React.useEffect(() => {
+  useEffect(() => {
     props.alert && setOpen(true);
   }, [props.alert]);
 
@@ -28,7 +31,11 @@ export default function MUISnackbar(props) {
         open={open}
         autoHideDuration={6000}
         onClose={handleClose}
-        message={`Added ${props.ticker} to watchlist.`}
+        message={
+          uid
+            ? `Added ${props.ticker} to watchlist.`
+            : "You need to sign in to create a watchlist!"
+        }
         action={
           <React.Fragment>
             <IconButton

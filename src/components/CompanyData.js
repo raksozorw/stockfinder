@@ -1,7 +1,4 @@
-// unfortunately this doesn't work very well... I think MUI needs to work on the usability
-//color can't be manipulated
-// can't figure out how to make it controlled by state... documentation could be better
-// Should try contributing to docs!!
+// this is not implemented yet, eventually I would like an autocompleted list of companies
 
 import React from "react";
 import TextField from "@material-ui/core/TextField";

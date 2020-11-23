@@ -6,11 +6,9 @@ import { v4 as uuidv4 } from "uuid";
 import { db } from "../firebase/firebaseConfig";
 import BottomNav from "./BottomNav";
 
-import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import DeleteIcon from "@material-ui/icons/Delete";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import IconButton from "@material-ui/core/IconButton";
+import StockBoxInner from "./StockBoxInner";
 
 export default function Quote(props) {
   const [data, setData] = useState({});
@@ -19,13 +17,13 @@ export default function Quote(props) {
   const [increase, setIncrease] = useState(true);
   const uid = useSelector((state) => state.auth.userId);
   const dispatch = useDispatch();
+
   const getQuote = async () => {
     await axios
       .get(
         `https://finnhub.io/api/v1/quote?symbol=${props.symbol}&token=${process.env.REACT_APP_API_TOKEN}`
       )
       .then((response) => {
-        console.log("worked");
         if (response.data.o) {
           const { c, h, l, o, pc, t } = response.data;
 
@@ -94,14 +92,15 @@ export default function Quote(props) {
   }, [data.current]);
 
   const firebaseSubmit = () => {
-    const date = new Date();
-    const dId = date.toUTCString();
-    const id = uuidv4();
-    db.ref(`lists/${uid}/${dId + id}`).set(data.ticker);
+    if (uid) {
+      const date = new Date();
+      const dId = date.toUTCString();
+      const id = uuidv4();
+      db.ref(`lists/${uid}/${dId + id}`).set(data.ticker);
+    } else {
+      console.log("Must be signed in to create a watchlist.");
+    }
   };
-
-  const up = <ArrowDropUpIcon style={{ color: "green" }} fontSize='large' />;
-  const down = <ArrowDropDownIcon style={{ color: "red" }} fontSize='large' />;
 
   return (
     <div>
@@ -117,44 +116,13 @@ export default function Quote(props) {
           </IconButton>
         </div>
       )}
-      <div className='stock-box-inner'>
-        <h1>{data.ticker !== "" ? data.ticker : ""}</h1>
-        <h2>{profile && profile.name}.</h2>
-        <h5>{profile.exchange}</h5>
+      <StockBoxInner
+        data={data}
+        profile={profile}
+        increase={increase}
+        change={change}
+      />
 
-        <div className='quote-numbers'>
-          <div className='price'>
-            <h1>{data.current ? data.current : <CircularProgress />}</h1>
-            <div className='arrow'>{increase ? up : down}</div>
-          </div>
-          <div className=''>
-            <p style={{ color: `${increase ? "green" : "red"}` }}>
-              {data.current &&
-                data.open &&
-                `${
-                  profile.name !== "No company data available."
-                    ? profile.currency
-                    : ""
-                } ${change.actual} (${change.percent}%)`}
-            </p>
-          </div>
-
-          <div className='quote-data'>
-            <div>
-              <h2>Open:</h2>
-              <p>{data && data.open}</p>
-            </div>
-            <div>
-              <h2>High:</h2>
-              <p>{data && data.high}</p>
-            </div>
-            <div>
-              <h2>Low:</h2>
-              <p>{data && data.low}</p>
-            </div>
-          </div>
-        </div>
-      </div>
       {!props.handleDelete && (
         <div>
           <BottomNav

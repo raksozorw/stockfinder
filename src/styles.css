@@ -68,12 +68,12 @@ input {
   font-size: 1.5rem;
   background-color: rgba(255, 255, 255, 0.95);
 
-  transition: 1s;
+  transition: 0.2s;
   color: rgba(44, 43, 43);
   animation-name: fadeIn;
   opacity: 0;
-  animation-delay: 1s;
-  animation-duration: 3s;
+  animation-delay: 0.5s;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 
@@ -142,7 +142,7 @@ input {
   padding: 0px 40px 60px 40px;
   font-size: 0.5rem;
 
-  transition: 1s;
+  transition: 0.5s;
   color: white;
 }
 
@@ -443,7 +443,7 @@ input {
 
     font-size: 0.5rem;
 
-    transition: 1s;
+    transition: 0.5s;
     color: white;
   }
 

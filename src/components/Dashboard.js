@@ -4,7 +4,6 @@ import { unsetError } from "../actions";
 import Quote from "./Quote";
 import Button from "@material-ui/core/Button";
 import NewList from "./NewList";
-import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default function Dashboard(props) {
   const [input, setInput] = useState("");
